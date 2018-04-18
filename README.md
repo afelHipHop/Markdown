@@ -1,10 +1,10 @@
-Universidad Distrital Francisco José de Caldas. Patrones 
+Universidad Distrital Francisco José de Caldas. Arenas - Ramirez - Rocha. Patrones 
 
 ## integrantes:
 
-* Hernan Arenas 20161020078
-* Andres Ramirez 20161020077
-* Kevin Rocha 20161020086
+* Hernan Arenas
+* Andres Ramirez
+* Kevin Rocha
 
 
 ## I introducción: 
@@ -152,6 +152,29 @@ Como vimos, el Singleton es un patrón sencillo para aplicar. Solo requiere de u
 
 El patrón singleton es uno de los patrones creacionales más sencillos, pero también es uno a de los que más se puede sacar provecho si se implementa bien, por esta razón, se decidió profundizar en el por encima de los otros.
 
+## III.III Abstract Factory
+
+Este patrón crea diferentes familias de objetos. Su objetivo principal es soportar múltiples estándares que vienen definidos por las diferentes jerarquías de herencia de objetos. Es similar al Factory Method, sólo que esta orientado a combinar productos.
+
+### Se debe utilizar este patrón cuando:
+* Un sistema se debe configurar con una de entre varias familias de productos.
+* Una familia de productos relacionados están hechos para utilizarse juntos.
+
+### Diagrama UML
+
+![abstract](absatract.jpg)
+
+* **AbstractFactory:** declara una interfaz para la creación de objetos de productos abstractos.
+* **ConcreteFactory:** implementa las operaciones para la creación de objetos de productos concretos.
+* **AbstractProduct:** declara una interfaz para los objetos de un tipo de productos.
+* **ConcreteProduct:** define un objeto de producto que la correspondiente factoría concreta se encargaría de crear, a la vez que implementa la interfaz de producto abstracto.
+* **Client:** utiliza solamente las interfaces declaradas en la factoría y en los productos abstractos. 
+Una única instancia de cada FactoryConcreto es creada en tiempo de ejecución. AbstractFactory delega la creación de productos a sus subclases FactoryConcreto.
+
+Ahora que explique que rol ocupa cada uno en el diagrama, les pido un poco de atención en lo siguiente: veamos que relación tienen  los FactoryConcretos con respectos a los productos. Esto es, FactoryConcreto1 crea una relación entre un producto de la familia A y un producto de la familia B. Y, por otro lado, tenemos que el FactoryConcreto2 crea una relación entre otros dos productos de ambas familias.
+
+Esto ya debería darnos una pista sobre el funcionamiento del AbstractFactory: se crea una clase por cada relación que necesitemos crear. Esto quedará más claro en el ejemplo a continuación.
+
 ## IV Patrones Estructurales
 
 Los patrones estructurales se enfocan en como las clases y objetos se componen para formar estructuras mayores, los patrones estructurales describen como las estructuras compuestas por clases crecen para crear nuevas funcionalidades de manera de agregar a la estructura flexibilidad y que la misma pueda cambiar en tiempo de ejecución lo cual es imposible con una composición de clases estáticas a pesar que se nombrarán todos para que haya claridad, en este documento solo nos centraremos en los dos anteriormente mencionados
@@ -166,7 +189,28 @@ estos patrones estan conformados por:
 * **Flyweight**
 * **Proxy**
 
- ## IV.I Decorator
+ ## IV.I Bridge
+ Por definicion el patron define su funcionalidad como:
+ 
+ "También conocido como Handle/Body, es una técnica usada en programación para desacoplar una abstracción de su implementación, de manera que ambas puedan ser modificadas independientemente sin necesidad de alterar por ello la otra. Esto es, se desacopla una abstracción de su implementación para que puedan variar independientemente."
+ 
+Un ejemplo de como debe ser su funcionamiento en un diagrama UML es:
+
+![Bridge](Bridge.jpg)
+
+* **Abstraction:** define una interface abstracta. Mantiene una referencia a un objeto de tipo Implementor.
+* **RefinedAbstraction:** extiende la interface definida por Abstraction.
+* ***Implementor:** define la interface para la implementación de clases. Esta interface no se tiene que corresponder exactamente con la interface de Abstraction; de hecho, las dos interfaces pueden ser bastante diferentes entre sí. Típicamente la interface Implementor provee sólo operaciones primitivas, y Abstraction define operaciones de alto nivel basadas en estas primitivas.
+* **ImplementadorConcreto:** implementa la interface de Implementor y define su implementación concreta.
+
+* **¿Cuando se debe usar este patron?**
+* Se desea evitar un enlace permanente entre la abstracción y su implementación. Esto puede ser debido a que la implementación debe ser seleccionada o cambiada en tiempo de ejecución.
+* Tanto las abstracciones como sus implementaciones deben ser extensibles por medio de subclases. En este caso, el patrón Bridge permite combinar abstracciones e implementaciones diferentes y extenderlas independientemente.
+* Cambios en la implementación de una abstracción no deben impactar en los clientes, es decir, su código no debe tener que ser recompilado.
+* Se desea compartir una implementación entre múltiples y este hecho debe ser escondido a los clientes.
+Permite simplificar jerarquías demasiado pobladas.
+
+ ## IV.II Decorator
  
  Por definición la funcionalidad de este patrón se expresa como:
  
@@ -213,7 +257,47 @@ Veremos cómo funciona desde el punto de vista del cliente:
  
 ![decorator7](coddec7.jpg)
 
-## IV.II Adapter
+## IV.III Composite
+Segun la definicion, se explica como:
+
+"Composite sirve para construir objetos complejos a partir de otros más simples y similares entre sí, gracias a la composición recursiva y a una estructura en forma de árbol."
+
+Expresado en diagramna tipo UML:
+
+![Composite](Composite.jpg)
+
+* **Component:** implementa un comportamiento común entre las clases y declara una interface de manipulación a los padres en la estructura recursiva.
+* **Leaf:** representa los objetos “hoja” (no poseen hijos). Define comportamientos para objetos primitivos.
+* **Composite:** define un comportamiento para objetos con hijos. Almacena componentes hijos. implementa operaciones de relación con los hijos.
+* **Cliente:** manipula objetos de la composición a través de Component.
+
+Los clientes usan la interfaz de Component para interactuar con objetos en la estructura Composite. Si el receptor es una hoja, la interacción es directa. Si es un Composite, se debe llegar a los objetos “hijos”, y puede llevar a utilizar operaciones adicionales.
+
+**Debemos usar este patron cuando:**
+* Se busca representar una jerarquía de objetos como “parte-todo”.
+* Se busca que el cliente puede ignorar la diferencia entre objetos primitivos y compuestos (para que pueda tratarlos de la misma manera).
+
+## IV.IV Facade
+
+La definicion del patron se expresa:
+
+"es un tipo de patrón de diseño estructural. Viene motivado por la necesidad de estructurar un entorno de programación y reducir su complejidad con la división en subsistemas, minimizando las comunicaciones y dependencias entre estos."
+
+Su funcionalidad segun su diagrama en UML es:
+![Facade](Facade.jpg)
+
+* **Facade:**  conoce cuales clases del subsistema son responsables de una petición. 
+Delega las peticiones de los clientes en los objetos del subsistema.
+* **Subsistema:** manejar el trabajo asignado por el objeto Facade. No tienen ningún conocimiento del Facade (no guardan referencia de éste).
+
+Los clientes se comunican con el subsistema a través de la facade, que reenvía las peticiones a los objetos del subsistema apropiados y puede realizar también algún trabajo de traducción. Los clientes que usan la facade no necesitan acceder directamente a los objetos del sistema.
+Debemos utilizar este patron cuando:
+
+* Se quiera proporcionar una interfaz sencilla para un subsistema complejo.
+* Se quiera desacoplar un subsistema de sus clientes y de otros subsistemas, haciéndolo más independiente y portable.
+* Se quiera dividir los sistemas en niveles: las fachadas serían el punto de entrada a cada nivel. Facade puede ser utilizado a nivel aplicación.
+
+## IV.V Adapter
 
 Según la definición es patrón adapter se define como:
 
@@ -267,57 +351,11 @@ Y se utiliza de esta manera:
 
 ![adapter6](codada6.jpg)
 
-## IV.VI Flyweight
-
-Busca eliminar o reducir la redundancia cuando tenemos gran cantidad de objetos que contienen información idéntica, además de lograr un equilibrio entre flexibilidad y rendimiento (uso de recursos).
-Este patrón quiere evitar el hecho de crear un gran número estados de objeto para representar a un sistema. Permite compartir estados para soportar un gran número de objetos pequeños aumentando la eficiencia en espacio.
-
-### ¿Cuándo se debe usar este patrón?
-
-• Para eliminar o reducir la redundancia cuando se tiene gran cantidad de objetos que contienen la misma información.
-
-• Cuando la memoria es crítica para el rendimiento de la aplicación.
-
-• La aplicación no depende de la identidad de los objetos.
-
-![uml flyweight](flyweight.jpg)
-
-* **Flyweight** declara una interfaz a través de la cual los flyweights pueden recibir y actuar sobre los estados no compartidos.
-* **ConcreteFlyweight:** implementa la interfaz Flyweight y almacena los estados compartidos, si los hay. Un objeto ConcreteFlyweight debe ser compartible. Cualquier estado que almacene debe ser intrínseco; es decir, debe ser independiente de su contexto.
-* **UnsharedConcreteFlyweight:** no todas las subclases de Flyweight tienen por qué ser compartidas. La interfaz Flyweight permite que se comparta; no lo fuerza. Es común que los objetos de esta clase tengan hijos de la clase ConcreteFlyweight en algún nivel de su estructura.
-* **FlyweightFactory:** crea y gestiona los objetos flyweight. Garantiza que los objetos flyweight se comparten de forma apropiada. Cuando un cliente solicita un flyweight, el objeto de la clase FlyweightFactory proporciona una instancia existente, o crea una.
-* **Client:** contiene referencias a los flyweights. Calcula o almacena los estados no compartidos de los flyweights.
-
-## IV.VII Proxy
-
-Se basa en proporcionar un objeto que haga de intermediario de otro, para controlar el acceso a él. Para ello obliga que las llamadas a un objeto ocurran indirectamente a través de un objeto proxy, que actúa como un sustituto del objeto original, delegando luego las llamadas a los métodos de los objetos respectivos.
-
-Existen diferentes tipos de proxy:
-
-* **Proxy remoto:** proporciona un representante local de un objeto situado en otro espacios de direcciones (en otro dispositivo conectado en red).
-* **Proxy virtual:** usados para crear objetos costosos sólo cuando se soliciten.
-* **Proxy de protección:** permiten controlar el acceso a un objeto cuando es accesible o no, dependiendo de determinados permisos.
-* **Referencia inteligente:** un sustito de un puntero, que realiza operaciones adicionales en el momento de accederse al objeto.
-
-El patrón Proxy es muy versátil. Puede ser utilizado en infinitas ocasiones y se le puede otorgar varios usos. Tiene una gran ventaja y es que no obliga al desarrollador a crear demasiada estructura para realizar este patrón, sino que es una forma estándar de acceder a una clase que potencialmente puede ser conflictiva. Por otro lado, no ayuda al desarrollador a crear un algoritmo, sino que el desarrollador tiene que hacer toda la lógica.
-
-### ¿Cuándo se debe usar este patrón?
-
-• Se necesite retrasar el coste de crear e inicializar un objeto hasta que es realmente necesario.
-
-![uml proxy](proxy.jpg)
-
-* **Subject:** interfaz o clase abstracta que proporciona un acceso común al objeto real y su representante (proxy).
-* **Proxy:** mantiene una referencia al objeto real. Controla la creación y acceso a las operaciones del objeto real.
-* **RealSubject:** define el objeto real representado por el Proxy.
-* **Cliente:** solicita el servicio a través del Proxy y es éste quién se comunica con el RealSubject.
-
-
 ## Referencias
 
 * https://migranitodejava.blogspot.com.co/
 * http://blog.koalite.com/2016/12/los-patrones-de-diseno-hoy-patrones-estructurales/
 * https://highscalability.wordpress.com/2010/04/12/patrones%C2%A0estructurales/
-* Aplicacion Movil de GoF
+* Aplicacion Mobil de GoF
 * http://www.cristalab.com/tutoriales/patrones-de-diseno
 * http://lineadecodigo.com/patrones/patrones-creacionales/
