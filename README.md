@@ -142,7 +142,18 @@ Y, el main, que representa al cliente que necesita utilizar esta clase:
 
 ![singleton4](codsing4.jpg)
 
-## Prototype
+ 
+### Otros temas a considerar.
+  
+Como vimos, el Singleton es un patrón sencillo para aplicar. Solo requiere de unos pequeños cambios a una clase. Sin embargo, debemos considerar un tema importante con respecto a este patrón: ¿que pasa si dos hilos del programa llaman (la primera vez) al método getInstance() al mismo tiempo? Bueno aqui podriamos tener un problema, ya que existe la remota posibilidad de que se logre crear dos instancias de la clase, en vez de una como quisieramos. La solución más sencilla es realizar un pequeño cambio:
+
+![singleton5](codsing5.jpg)
+
+### ¿Por qué se escogió?
+
+El patrón singleton es uno de los patrones creacionales más sencillos, pero también es uno a de los que más se puede sacar provecho si se implementa bien, por esta razón, se decidió profundizar en el por encima de los otros.
+
+## III.III Prototype
 Segun la definicion, este patron se puede definir como:
 
 "tiene como finalidad crear nuevos objetos clonando una instancia creada previamente. Este patrón especifica la clase de objetos a crear mediante la clonación de un prototipo que es una instancia ya creada. La clase de los objetos que servirán de prototipo deberá incluir en su interfaz la manera de solicitar una copia, que será desarrollada luego por las clases concretas de prototipos."
@@ -155,16 +166,12 @@ Su funcionalidad expresada en un diagrma UML es:
 * **PrototypeConcreto:** las clases en este papel implementan una operación por medio de la clonación de sí mismo. 
 * **Cliente:** crea nuevos objetos pidiendo al prototipo que se clone. 
 
-Los objetos de Prototipo Concreto heredan de Prototype y de esta forma el patrón se asegura de que los objetos prototipo proporcionan un conjunto consistente de métodos para que los objetos clientes los utilicen. 
-### Otros temas a considerar.
-  
-Como vimos, el Singleton es un patrón sencillo para aplicar. Solo requiere de unos pequeños cambios a una clase. Sin embargo, debemos considerar un tema importante con respecto a este patrón: ¿que pasa si dos hilos del programa llaman (la primera vez) al método getInstance() al mismo tiempo? Bueno aqui podriamos tener un problema, ya que existe la remota posibilidad de que se logre crear dos instancias de la clase, en vez de una como quisieramos. La solución más sencilla es realizar un pequeño cambio:
+Los objetos de Prototipo Concreto heredan de Prototype y de esta forma el patrón se asegura de que los objetos prototipo proporcionan un conjunto consistente de métodos para que los objetos clientes los utilicen.
 
-![singleton5](codsing5.jpg)
+Debemos Utilizar este patron cuando:
 
-### ¿Por qué se escogió?
-
-El patrón singleton es uno de los patrones creacionales más sencillos, pero también es uno a de los que más se puede sacar provecho si se implementa bien, por esta razón, se decidió profundizar en el por encima de los otros.
+* Aplica en un escenario donde sea necesario la creación de objetos parametrizados como "recién salidos de fábrica" ya listos para utilizarse, con la gran ventaja de la mejora de la performance: clonar objetos es más rápido que crearlos y luego setear cada valor en particular.
+* Este patrón debe ser utilizado cuando un sistema posea objetos con datos repetitivos, en cuanto a sus atributos: por ejemplo, si una biblioteca posee una gran cantidad de libros de una misma editorial, mismo idioma, etc. Hay que pensar en este patrón como si fuese un fábrica que tiene ciertas plantillas de ejemplos de sus prodcutos y, a partir de estos prototipos, puede crear una gran cantidad de productos con esas características.
 
 ## IV Patrones Estructurales
 
