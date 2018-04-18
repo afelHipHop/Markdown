@@ -409,6 +409,24 @@ Este patrón quiere evitar el hecho de crear un gran número estados de objeto p
 * **FlyweightFactory:** crea y gestiona los objetos flyweight. Garantiza que los objetos flyweight se comparten de forma apropiada. Cuando un cliente solicita un flyweight, el objeto de la clase FlyweightFactory proporciona una instancia existente, o crea una.
 * **Client:** contiene referencias a los flyweights. Calcula o almacena los estados no compartidos de los flyweights.
 
+## IV.VII Proxy
+
+Se utiliza como intermediario para acceder a un objeto, permitiendo controlar el acceso a él. Para ello obliga que las llamadas a un objeto ocurran indirectamente a través de un objeto proxy, que actúa como un sustituto del objeto original, delegando luego las llamadas a los métodos de los objetos respectivos.
+
+Existen diferentes tipos de proxy:
+
+* **Proxy remoto:** proporciona un representante local de un objeto situado en otro espacios de direcciones (en otro dispositivo conectado en red).
+* **Proxy virtual:** usados para crear objetos costosos sólo cuando se soliciten.
+* **Proxy de protección:** permiten controlar el acceso a un objeto cuando es accesible o no, dependiendo de determinados permisos.
+* **Referencia inteligente:** un sustito de un puntero, que realiza operaciones adicionales en el momento de accederse al objeto.
+
+![uml proxy](proxy.jpg)
+
+* **Subject:** interfaz o clase abstracta que proporciona un acceso común al objeto real y su representante (proxy).
+* **Proxy:** mantiene una referencia al objeto real. Controla la creación y acceso a las operaciones del objeto real.
+* **RealSubject:** define el objeto real representado por el Proxy.
+* **Cliente:** solicita el servicio a través del Proxy y es éste quién se comunica con el RealSubject.
+
 ## Referencias
 
 * https://migranitodejava.blogspot.com.co/
