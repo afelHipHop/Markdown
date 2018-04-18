@@ -564,6 +564,38 @@ Debemos utilizar este patron cuando:
 * Se quiera desacoplar un subsistema de sus clientes y de otros subsistemas, haciéndolo más independiente y portable.
 * Se quiera dividir los sistemas en niveles: las fachadas serían el punto de entrada a cada nivel. Facade puede ser utilizado a nivel aplicación.
 
+## Ejemplo
+
+package com.genbetadev;
+
+ public class FachadaImpresoraNormal {
+
+ 		Impresora impresora;
+
+ 		public FachadaImpresoraNormal(String texto) {
+
+ 		 		super();
+
+ 		 		impresora= new Impresora();
+
+ 		 		impresora.setColor(true);
+
+ 		 		impresora.setHoja("A4");
+
+ 		 		impresora.setTipoDocumento("PDF");
+
+ 		 		impresora.setTexto(texto);
+
+ 		 }
+
+ 		public void imprimir() {
+
+ 		 		impresora.imprimirDocumento();
+
+ 		 }
+
+ }
+
 ## IV.V Adapter
 
 Según la definición es patrón adapter se define como:
