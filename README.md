@@ -66,6 +66,8 @@ El patrón builder es un patrón usado muy frecuentemente en la programación, p
 
 a continuación se verá un ejemplo de como utilizar builder
 
+![builder](codada1.jpg)
+
 El objetivo del ejemplo es poder crear un objeto Auto (este sería nuestro producto). El auto se compondrá de varios atributos que lo componen: motor, marca, modelo y cantidad de puertas. En nuestro ejemplo, el auto no se compone de muchos objetos complejos. De hecho, se compone de sólo 4 objetos relativamente sencillos. Esto es para poder hacer entendible la propuesta del Builder y no perderse en los objetos que lo componen. Queda en la imaginación del lector la posibilidad de trabajar con ejemplos más complejos. Yo particularmente usé mucho este patrón cuando trabajé con archvios.
 
 ![builder 1](cod buil 1.jpg)
