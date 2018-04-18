@@ -1,8 +1,11 @@
 Universidad Distrital Francisco José de Caldas. Arenas - Ramirez - Rocha. Patrones 
 
-***Abstract*- text**
+## integrantes:
 
-Resumen- 
+* Hernan Arenas
+* Andres Ramirez
+* Kevin Rocha
+
 
 ## I introducción: 
 
