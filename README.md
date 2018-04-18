@@ -60,5 +60,33 @@ El Builder maneja los requerimientos desde el Director y agrega partes al produc
 
 El Cliente recupera el Producto desde el constructor.
 
+### Por qué se escogió?
+
+El patrón builder es un patrón usado muy frecuentemente en la programación, por esto se consideró pertinente, enfatizar en su explicación con respecto a los demás patrones. 
+
+a continuación se verá un ejemplo de como utilizar builder
+
+El objetivo del ejemplo es poder crear un objeto Auto (este sería nuestro producto). El auto se compondrá de varios atributos que lo componen: motor, marca, modelo y cantidad de puertas. En nuestro ejemplo, el auto no se compone de muchos objetos complejos. De hecho, se compone de sólo 4 objetos relativamente sencillos. Esto es para poder hacer entendible la propuesta del Builder y no perderse en los objetos que lo componen. Queda en la imaginación del lector la posibilidad de trabajar con ejemplos más complejos. Yo particularmente usé mucho este patrón cuando trabajé con archvios.
+
+![builder 1](cod buil 1.jpg)
+![builder 2](cod buil 2.jpg)
+
+Siguiendo con nuestro ejemplo, definimos nuestro Builder llamado AutoBuilder. El Builder define al menos dos cosas: un método para devolver el Producto (el auto en nuestro caso) y los métodos necesarios para la construcción del mismo.
+
+![builder 3](cod buil 3.jpg)
+
+Serán los ConcreteBuilders los encargados de colocarle la lógica de construcción de cada Auto en particular. En nuestro caso, tendremos dos ConcreteBuilder: FiatBuildery FordBuilder. Recordemos que, en nuestro ejemplo, son clases que construyen objetos muy sencillos con datos hardcodeados para facilitar el aprendijaze del patrón en sí.
+
+![builder 4](cod buil 4.jpg)
+![builder 5](cod buil 5.jpg)
+
+Por último, realizaremos el Director. Lo primero que debe hacerse con esta clase es enviarle el tipo de auto que se busca construir (Ford, Fiat, etc). Luego, al llamar al método constructAuto(), la construcción se realizará de manera automática. 
+
+![builder 6](cod buil 6.jpg)
+
+la vista desde el cliente sería:
+![builder 7](cod buil 7.jpg)
+
+## III.II Patron Singleton 
 # Markdown
 
