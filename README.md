@@ -66,13 +66,11 @@ El Cliente recupera el Producto desde el constructor.
 
 El patrón builder es un patrón usado muy frecuentemente en la programación, por esto se consideró pertinente, enfatizar en su explicación con respecto a los demás patrones. 
 
-a continuación se verá un ejemplo de como utilizar builder
-
-![builder](codada1.jpg)
+a continuación se verá un ejemplo de como utilizar builder:
 
 El objetivo del ejemplo es poder crear un objeto Auto (este sería nuestro producto). El auto se compondrá de varios atributos que lo componen: motor, marca, modelo y cantidad de puertas. En nuestro ejemplo, el auto no se compone de muchos objetos complejos. De hecho, se compone de sólo 4 objetos relativamente sencillos. Esto es para poder hacer entendible la propuesta del Builder y no perderse en los objetos que lo componen. Queda en la imaginación del lector la posibilidad de trabajar con ejemplos más complejos. Yo particularmente usé mucho este patrón cuando trabajé con archvios.
 
-![builder1](codada1.jpg)
+![builder1](codbuil1.jpg)
 
 ![builder 2](codbuil2.jpg)
 
@@ -260,7 +258,7 @@ Para esta situación lo ideal es utilizar el Adapter. Para ello primero crearemo
  
 Ahora crearemos al Adapter.
 
-![adapter5](codada15.jpg)
+![adapter5](codada5.jpg)
  
 Y se utiliza de esta manera:
 
