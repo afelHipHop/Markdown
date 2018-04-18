@@ -114,11 +114,11 @@ No debe utilizarse cuando una clase esta representando a un objeto que no es ún
 
 *Firg 2. Estructura Singleton tomado de la app de GoF** 
 
-**Interpretación:** 
+### **Interpretación:** 
 
 Crear una clase Singleton con una instancia estática y un constructor privado. Proviene un método estático para permitir solamente el acceso a la instancia. 
 
-**Singletonitis:** 
+### **Singletonitis:** 
 
 Debido a que Singleton es probablemente el patrón más sencillo del GoF, muchas veces las personas abusan de su uso y ponen el patrón donde es innecesario, a este uso indebido se le conoce como Singletonitis. 
 
