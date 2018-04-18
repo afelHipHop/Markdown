@@ -166,7 +166,28 @@ estos patrones estan conformados por:
 * **Flyweight**
 * **Proxy**
 
- ## IV.I Decorator
+ ## IV.I Bridge
+ Por definicion el patron define su funcionalidad como:
+ 
+ "También conocido como Handle/Body, es una técnica usada en programación para desacoplar una abstracción de su implementación, de manera que ambas puedan ser modificadas independientemente sin necesidad de alterar por ello la otra. Esto es, se desacopla una abstracción de su implementación para que puedan variar independientemente."
+ 
+Un ejemplo de como debe ser su funcionamiento en un diagrama UML es:
+
+![Bridge](Bridge.jpg)
+
+* **Abstraction:** define una interface abstracta. Mantiene una referencia a un objeto de tipo Implementor.
+* **RefinedAbstraction:** extiende la interface definida por Abstraction.
+* ***Implementor:** define la interface para la implementación de clases. Esta interface no se tiene que corresponder exactamente con la interface de Abstraction; de hecho, las dos interfaces pueden ser bastante diferentes entre sí. Típicamente la interface Implementor provee sólo operaciones primitivas, y Abstraction define operaciones de alto nivel basadas en estas primitivas.
+* **ImplementadorConcreto:** implementa la interface de Implementor y define su implementación concreta.
+
+* **¿Cuando se debe usar este patron?**
+* Se desea evitar un enlace permanente entre la abstracción y su implementación. Esto puede ser debido a que la implementación debe ser seleccionada o cambiada en tiempo de ejecución.
+* Tanto las abstracciones como sus implementaciones deben ser extensibles por medio de subclases. En este caso, el patrón Bridge permite combinar abstracciones e implementaciones diferentes y extenderlas independientemente.
+* Cambios en la implementación de una abstracción no deben impactar en los clientes, es decir, su código no debe tener que ser recompilado.
+* Se desea compartir una implementación entre múltiples y este hecho debe ser escondido a los clientes.
+Permite simplificar jerarquías demasiado pobladas.
+
+ ## IV.II Decorator
  
  Por definición la funcionalidad de este patrón se expresa como:
  
@@ -213,7 +234,47 @@ Veremos cómo funciona desde el punto de vista del cliente:
  
 ![decorator7](coddec7.jpg)
 
-## IV.II Adapter
+## IV.III Composite
+Segun la definicion, se explica como:
+
+"Composite sirve para construir objetos complejos a partir de otros más simples y similares entre sí, gracias a la composición recursiva y a una estructura en forma de árbol."
+
+Expresado en diagramna tipo UML:
+
+![Composite](Composite.jpg)
+
+* **Component:** implementa un comportamiento común entre las clases y declara una interface de manipulación a los padres en la estructura recursiva.
+* **Leaf:** representa los objetos “hoja” (no poseen hijos). Define comportamientos para objetos primitivos.
+* **Composite:** define un comportamiento para objetos con hijos. Almacena componentes hijos. implementa operaciones de relación con los hijos.
+* **Cliente:** manipula objetos de la composición a través de Component.
+
+Los clientes usan la interfaz de Component para interactuar con objetos en la estructura Composite. Si el receptor es una hoja, la interacción es directa. Si es un Composite, se debe llegar a los objetos “hijos”, y puede llevar a utilizar operaciones adicionales.
+
+**Debemos usar este patron cuando:**
+* Se busca representar una jerarquía de objetos como “parte-todo”.
+* Se busca que el cliente puede ignorar la diferencia entre objetos primitivos y compuestos (para que pueda tratarlos de la misma manera).
+
+## IV.IV Facade
+
+La definicion del patron se expresa:
+
+"es un tipo de patrón de diseño estructural. Viene motivado por la necesidad de estructurar un entorno de programación y reducir su complejidad con la división en subsistemas, minimizando las comunicaciones y dependencias entre estos."
+
+Su funcionalidad segun su diagrama en UML es:
+![Facade](Facade.jpg)
+
+* **Facade:**  conoce cuales clases del subsistema son responsables de una petición. 
+Delega las peticiones de los clientes en los objetos del subsistema.
+* **Subsistema:** manejar el trabajo asignado por el objeto Facade. No tienen ningún conocimiento del Facade (no guardan referencia de éste).
+
+Los clientes se comunican con el subsistema a través de la facade, que reenvía las peticiones a los objetos del subsistema apropiados y puede realizar también algún trabajo de traducción. Los clientes que usan la facade no necesitan acceder directamente a los objetos del sistema.
+Debemos utilizar este patron cuando:
+
+* Se quiera proporcionar una interfaz sencilla para un subsistema complejo.
+* Se quiera desacoplar un subsistema de sus clientes y de otros subsistemas, haciéndolo más independiente y portable.
+* Se quiera dividir los sistemas en niveles: las fachadas serían el punto de entrada a cada nivel. Facade puede ser utilizado a nivel aplicación.
+
+## IV.V Adapter
 
 Según la definición es patrón adapter se define como:
 
@@ -266,27 +327,6 @@ Ahora crearemos al Adapter.
 Y se utiliza de esta manera:
 
 ![adapter6](codada6.jpg)
-
-## IV.VI Flyweight
-
-Busca eliminar o reducir la redundancia cuando tenemos gran cantidad de objetos que contienen información idéntica, además de lograr un equilibrio entre flexibilidad y rendimiento (uso de recursos).
-Este patrón quiere evitar el hecho de crear un gran número estados de objeto para representar a un sistema. Permite compartir estados para soportar un gran número de objetos pequeños aumentando la eficiencia en espacio.
-
-### ¿Cuándo se debe usar este patrón?
-
-• Para eliminar o reducir la redundancia cuando se tiene gran cantidad de objetos que contienen la misma información.
-
-• Cuando la memoria es crítica para el rendimiento de la aplicación.
-
-• La aplicación no depende de la identidad de los objetos.
-
-![uml adapter](flyweight.jpg)
-
-* **Flyweight** declara una interfaz a través de la cual los flyweights pueden recibir y actuar sobre los estados no compartidos.
-* **ConcreteFlyweight:** implementa la interfaz Flyweight y almacena los estados compartidos, si los hay. Un objeto ConcreteFlyweight debe ser compartible. Cualquier estado que almacene debe ser intrínseco; es decir, debe ser independiente de su contexto.
-* **UnsharedConcreteFlyweight:** no todas las subclases de Flyweight tienen por qué ser compartidas. La interfaz Flyweight permite que se comparta; no lo fuerza. Es común que los objetos de esta clase tengan hijos de la clase ConcreteFlyweight en algún nivel de su estructura.
-* **FlyweightFactory:** crea y gestiona los objetos flyweight. Garantiza que los objetos flyweight se comparten de forma apropiada. Cuando un cliente solicita un flyweight, el objeto de la clase FlyweightFactory proporciona una instancia existente, o crea una.
-* **Client:** contiene referencias a los flyweights. Calcula o almacena los estados no compartidos de los flyweights.
 
 ## Referencias
 
