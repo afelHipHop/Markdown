@@ -47,14 +47,17 @@ Esta patrón debe utilizarse cuando el algoritmo para crear un objeto suele ser 
 
 ![uml builder](builder.jpg)
 
-Producto: representa el objeto complejo a construir.
-Builder: especifica una interface abstracta para la creación de las partes del Producto. Declara las operaciones necesarias para crear las partes de un objeto concreto.
-ConcreteBuilder: implementa Builder y ensambla las partes que constituyen el objeto complejo.
-Director: construye un objeto usando la interfaz Builder. Sólo debería ser necesario especificar su tipo y así poder reutilizar el mismo proceso para distintos tipos.
+* Producto: representa el objeto complejo a construir.
+* Builder: especifica una interface abstracta para la creación de las partes del Producto. Declara las operaciones necesarias para crear las partes de un objeto concreto.
+* ConcreteBuilder: implementa Builder y ensambla las partes que constituyen el objeto complejo.
+* Director: construye un objeto usando la interfaz Builder. Sólo debería ser necesario especificar su tipo y así poder reutilizar el mismo proceso para distintos tipos.
 
 El Cliente crea el objeto Director y lo configura con el objeto Builder deseado.
+
 El Director notifica al constructor cuándo una parte del Producto se debe construir.
+
 El Builder maneja los requerimientos desde el Director y agrega partes al producto.
+
 El Cliente recupera el Producto desde el constructor.
 
 # Markdown
