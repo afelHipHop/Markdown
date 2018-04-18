@@ -160,7 +160,7 @@ Segun la definicion, este patron se puede definir como:
 
 Su funcionalidad expresada en un diagrma UML es:
 
-[Prototype](prototype.jpg)
+![protitype](Prototype.jpg)
 
 * **Prototype:** declara la interface del objeto que se clona. Suele ser una clase abstracta.
 * **PrototypeConcreto:** las clases en este papel implementan una operación por medio de la clonación de sí mismo. 
@@ -172,6 +172,27 @@ Debemos Utilizar este patron cuando:
 
 * Aplica en un escenario donde sea necesario la creación de objetos parametrizados como "recién salidos de fábrica" ya listos para utilizarse, con la gran ventaja de la mejora de la performance: clonar objetos es más rápido que crearlos y luego setear cada valor en particular.
 * Este patrón debe ser utilizado cuando un sistema posea objetos con datos repetitivos, en cuanto a sus atributos: por ejemplo, si una biblioteca posee una gran cantidad de libros de una misma editorial, mismo idioma, etc. Hay que pensar en este patrón como si fuese un fábrica que tiene ciertas plantillas de ejemplos de sus prodcutos y, a partir de estos prototipos, puede crear una gran cantidad de productos con esas características.
+
+## III.IV Abstract Factory
+Por definicion se expresa como:
+
+"Este patrón crea diferentes familias de objetos. Su objetivo principal es soportar múltiples estándares que vienen definidos por las diferentes jerarquías de herencia de objetos. Es similar al Factory Method, sólo que esta orientado a combinar productos."
+
+Se expresa en diagrama UML:
+
+![Abstract](abstract.jpg)
+
+* **AbstractFactory:** declara una interfaz para la creación de objetos de productos abstractos.
+* **ConcreteFactory:** implementa las operaciones para la creación de objetos de productos concretos.
+* **AbstractProduct:** declara una interfaz para los objetos de un tipo de productos.
+* **ConcreteProduct:** define un objeto de producto que la correspondiente factoría concreta se encargaría de crear, a la vez que implementa la interfaz de producto abstracto.
+* **Client:** utiliza solamente las interfaces declaradas en la factoría y en los productos abstractos. 
+Una única instancia de cada FactoryConcreto es creada en tiempo de ejecución. AbstractFactory delega la creación de productos a sus subclases FactoryConcreto.
+
+Debemos usar este Patron cuando:
+
+* Un sistema se debe configurar con una de entre varias familias de productos.
+* Una familia de productos relacionados están hechos para utilizarse juntos.
 
 ## IV Patrones Estructurales
 
