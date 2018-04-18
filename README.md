@@ -160,7 +160,7 @@ Segun la definicion, este patron se puede definir como:
 
 Su funcionalidad expresada en un diagrma UML es:
 
-![protitype](Prototype.jpg)
+![protitype](prototype.jpg)
 
 * **Prototype:** declara la interface del objeto que se clona. Suele ser una clase abstracta.
 * **PrototypeConcreto:** las clases en este papel implementan una operación por medio de la clonación de sí mismo. 
@@ -193,6 +193,24 @@ Debemos usar este Patron cuando:
 
 * Un sistema se debe configurar con una de entre varias familias de productos.
 * Una familia de productos relacionados están hechos para utilizarse juntos.
+
+## III.V Factory Method
+Se define como:
+
+*"el patrón de diseño Factory Method consiste en utilizar una clase constructora (al estilo del Abstract Factory) abstracta con unos cuantos métodos definidos y otro(s) abstracto(s): el dedicado a la construcción de objetos de un subtipo de un tipo determinado. Es una simplificación del Abstract Factory, en la que la clase abstracta tiene métodos concretos que usan algunos de los abstractos; según usemos una u otra hija de esta clase abstracta, tendremos uno u otro comportamiento."*
+
+Se expresa como diagrama en UML:
+
+![Factory](method.jpg)
+
+* **Creator:** declara el método de fabricación (creación), que devuelve un objeto de tipo Product. 
+* **ConcretCreator:** redefine el método de fabricación para devolver un producto.
+* **ProductoConcreto:** es el resultado final. El creador se apoya en sus subclases para definir el método de fabricación que devuelve el objeto apropiado.
+
+Debemos usar este patron cuando:
+
+* Una clase no puede anticipar el tipo de objeto que debe crear y quiere que sus subclases especifiquen dichos objetos.
+* Hay clases que delegan responsabilidades en una o varias subclases. Una aplicación es grande y compleja y posee muchos patrones creacionales. 
 
 ## IV Patrones Estructurales
 
