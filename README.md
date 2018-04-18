@@ -162,7 +162,7 @@ Este patrón crea diferentes familias de objetos. Su objetivo principal es sopor
 
 ### Diagrama UML
 
-![abstract](absatract.jpg)
+![abstract](abstract.jpg)
 
 * **AbstractFactory:** declara una interfaz para la creación de objetos de productos abstractos.
 * **ConcreteFactory:** implementa las operaciones para la creación de objetos de productos concretos.
