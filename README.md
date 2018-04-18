@@ -247,6 +247,86 @@ Un ejemplo de como debe ser su funcionamiento en un diagrama UML es:
 * Se desea compartir una implementación entre múltiples y este hecho debe ser escondido a los clientes.
 Permite simplificar jerarquías demasiado pobladas.
 
+## Ejemplo
+
+interface Implementador {
+
+    public abstract void operacion();
+    
+}
+ 
+/** primera implementacion de Implementador **/
+
+class ImplementacionA implements Implementador{
+
+    public void operacion() {
+    
+        System.out.println("Esta es la implementacion A");
+        
+    }
+    
+}
+
+/** segunda implementacion de Implementador **/
+
+class ImplementacionB implements Implementador{
+
+    public void operacion() {
+    
+        System.out.println("Esta es una implementacion de B");
+        
+    }
+    
+}
+
+/** interfaz de abstracción **/
+
+interface Abstraccion {
+
+    public void operacion();
+    
+}
+
+/** clase refinada que implementa la abstraccion **/
+
+class AbstraccionRefinada implements Abstraccion{
+
+    private Implementador implementador;
+    
+    public AbstraccionRefinada(Implementador implementador){
+    
+        this.implementador = implementador;
+        
+    }
+    
+    public void operacion(){
+    
+        implementador.operacion();
+        
+    }
+    
+}
+
+/** aplicacion que usa el patrón Bridge **/
+
+public class EjemploBridge {
+
+    public static void main(String[] args) {
+    
+        Abstraccion[] abstracciones = new Abstraccion[2];
+        
+        abstracciones[0] = new AbstraccionRefinada(new ImplementacionA());
+        
+        abstracciones[1] = new AbstraccionRefinada(new ImplementacionB());
+        
+        for(Abstraccion abstraccion:abstracciones)
+        
+            abstraccion.operacion();
+            
+    }
+    
+}
+
  ## IV.II Decorator
  
  Por definición la funcionalidad de este patrón se expresa como:
