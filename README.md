@@ -265,3 +265,12 @@ Ahora crearemos al Adapter.
 Y se utiliza de esta manera:
 
 ![adapter6](codada6.jpg)
+
+## Referencias
+
+* https://migranitodejava.blogspot.com.co/
+* http://blog.koalite.com/2016/12/los-patrones-de-diseno-hoy-patrones-estructurales/
+* https://highscalability.wordpress.com/2010/04/12/patrones%C2%A0estructurales/
+* Aplicacion Mobil de GoF
+* http://www.cristalab.com/tutoriales/patrones-de-diseno
+* http://lineadecodigo.com/patrones/patrones-creacionales/
