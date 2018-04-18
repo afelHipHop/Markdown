@@ -131,7 +131,7 @@ Entonces, haremos que el instituto aplique el patrón Singleton:
 
 Para llamar al instituto debemos hacer lo siguiente:
 
-![singleton2](codsing.jpg)
+![singleton2](codsing2.jpg)
 
 Bien, veamos ahora este mismo ejemplo, con una pequeña modificación: vamos a agregarle un atributo a la clase InstitutoEducativo y veremos como se comporta a lo largo de las distintas llamadas al método getInstance().
 
@@ -175,7 +175,7 @@ Un ejemplo de cómo debería expresarse la funcionalidad de este patrón mediant
 
  ![uml decorator](decorator.jpg)
  
- *Design Patterns: Elements of Reusable Object-Oriented Software*
+ *Fig 3. Design Patterns: Elements of Reusable Object-Oriented Software*
 
 * **Componente**: Se quiere agregar o quitar dinámicamente la funcionalidad de un objeto.
 * **ComponenteConcreto:** Se quiere agregar o quitar dinámicamente la funcionalidad de un objeto.
@@ -198,19 +198,19 @@ Imaginemos que vendemos automóviles y el cliente puede opcionalmente adicionar 
  
 Bien, hasta aquí clases comunes de negocio: una interface que implementa la clase Auto y dos tipos de Auto (Ford y Fiat). Ahora veremos en que consiste el Decorator y los decoradores:
  
- ![decorator2](decorator2.jpg)
+ ![decorator2](coddec2.jpg)
 
- ![decorator3](decorator3.jpg)
+ ![decorator3](coddec3.jpg)
 
- ![decorator4](decorator4.jpg)
+ ![decorator4](coddec4.jpg)
 
- ![decorator5](decorator5.jpg)
+ ![decorator5](coddec5.jpg)
 
-![decorator6](decorator6.jpg)
+![decorator6](coddec6.jpg)
 
 Veremos cómo funciona desde el punto de vista del cliente:
  
-![decorator7](decorator7.jpg)
+![decorator7](coddec7.jpg)
 
 ## IV.II Adapter
 
