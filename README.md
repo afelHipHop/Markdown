@@ -173,6 +173,8 @@ Debemos Utilizar este patron cuando:
 * Aplica en un escenario donde sea necesario la creación de objetos parametrizados como "recién salidos de fábrica" ya listos para utilizarse, con la gran ventaja de la mejora de la performance: clonar objetos es más rápido que crearlos y luego setear cada valor en particular.
 * Este patrón debe ser utilizado cuando un sistema posea objetos con datos repetitivos, en cuanto a sus atributos: por ejemplo, si una biblioteca posee una gran cantidad de libros de una misma editorial, mismo idioma, etc. Hay que pensar en este patrón como si fuese un fábrica que tiene ciertas plantillas de ejemplos de sus prodcutos y, a partir de estos prototipos, puede crear una gran cantidad de productos con esas características.
 
+![](prototype1.jpg)
+
 ## III.IV Abstract Factory
 Por definicion se expresa como:
 
@@ -194,6 +196,8 @@ Debemos usar este Patron cuando:
 * Un sistema se debe configurar con una de entre varias familias de productos.
 * Una familia de productos relacionados están hechos para utilizarse juntos.
 
+![](abstract1.jpg)
+
 ## III.V Factory Method
 Se define como:
 
@@ -211,6 +215,8 @@ Debemos usar este patron cuando:
 
 * Una clase no puede anticipar el tipo de objeto que debe crear y quiere que sus subclases especifiquen dichos objetos.
 * Hay clases que delegan responsabilidades en una o varias subclases. Una aplicación es grande y compleja y posee muchos patrones creacionales. 
+
+![](method1.jpg)
 
 ## IV Patrones Estructurales
 
