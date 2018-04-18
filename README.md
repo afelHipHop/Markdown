@@ -160,7 +160,7 @@ Segun la definicion, este patron se puede definir como:
 
 Su funcionalidad expresada en un diagrma UML es:
 
-[Protitype](Prototype.jpg)
+[Protitype](prototype.jpg)
 
 * **Prototype:** declara la interface del objeto que se clona. Suele ser una clase abstracta.
 * **PrototypeConcreto:** las clases en este papel implementan una operación por medio de la clonación de sí mismo. 
