@@ -152,6 +152,65 @@ Como vimos, el Singleton es un patrón sencillo para aplicar. Solo requiere de u
 
 El patrón singleton es uno de los patrones creacionales más sencillos, pero también es uno a de los que más se puede sacar provecho si se implementa bien, por esta razón, se decidió profundizar en el por encima de los otros.
 
+## III.III Prototype
+
+El patrón prototype tiene un objetivo muy sencillo: crear a partir de un modelo.Permite crear objetos prediseñados sin conocer detalles de cómo crearlos. Esto lo logra especificando los prototipos de objetos a crear. Los nuevos objetos que se crearán de los prototipos, en realidad, son clonados. Vale decir, tiene como finalidad crear nuevos objetos duplicándolos, clonando una instancia creada previamente.
+
+### Cuando utilizar este patrón:
+
+* Aplica en un escenario donde sea necesario la creación de objetos parametrizados como "recién salidos de fábrica" ya listos para utilizarse, con la gran ventaja de la mejora de la performance: clonar objetos es más rápido que crearlos y luego setear cada valor en particular.
+
+* Este patrón debe ser utilizado cuando un sistema posea objetos con datos repetitivos, en cuanto a sus atributos: por ejemplo, si una biblioteca posee una gran cantidad de libros de una misma editorial, mismo idioma, etc. Hay que pensar en este patrón como si fuese un fábrica que tiene ciertas plantillas de ejemplos de sus prodcutos y, a partir de estos prototipos, puede crear una gran cantidad de productos con esas características.
+
+Diagrama UML
+
+![prototype](prototype.jpg)
+
+* **Prototype:** declara la interface del objeto que se clona. Suele ser una clase abstracta.
+PrototypeConcreto: las clases en este papel implementan una operación por medio de la clonación de sí mismo. 
+* **Cliente:** crea nuevos objetos pidiendo al prototipo que se clone. 
+
+Los objetos de Prototipo Concreto heredan de Prototype y de esta forma el patrón se asegura de que los objetos prototipo proporcionan un conjunto consistente de métodos para que los objetos clientes los utilicen. 
+
+## III.IV Abstract Factory
+
+Este patrón crea diferentes familias de objetos. Su objetivo principal es soportar múltiples estándares que vienen definidos por las diferentes jerarquías de herencia de objetos.Es similar al Factory Method, sólo que esta orientado a combinar productos.
+
+ ### Se debe utilizar este patrón cuando:
+ 
+* Un sistema se debe configurar con una de entre varias familias de productos.
+* Una familia de productos relacionados están hechos para utilizarse juntos.
+
+### Diagrama UML
+
+![abstract](abstract.jpg)
+
+* **AbstractFactory:** declara una interfaz para la creación de objetos de productos abstractos.
+* **ConcreteFactory:** implementa las operaciones para la creación de objetos de productos concretos.
+* **AbstractProduct:** declara una interfaz para los objetos de un tipo de productos.
+* **ConcreteProduct:** define un objeto de producto que la correspondiente factoría concreta se encargaría de crear, a la vez que implementa la interfaz de producto abstracto.
+* **Client:** utiliza solamente las interfaces declaradas en la factoría y en los productos abstractos. 
+
+Una única instancia de cada FactoryConcreto es creada en tiempo de ejecución. AbstractFactory delega la creación de productos a sus subclases FactoryConcreto.
+
+## III.V Factory Method
+
+Libera al desarrollador sobre la forma correcta de crear objetos. Define la interfaz de creación de un cierto tipo de objeto, permitiendo que las subclases decidan que clase concreta necesitan instancias.
+
+Muchas veces ocurre que una clase no puede anticipar el tipo de objetos que debe crear, ya que la jerarquía de clases que tiene requiere que deba delegar la responsabilidad a una subclase.
+
+### Este patrón debe ser utilizado cuando:
+* Una clase no puede anticipar el tipo de objeto que debe crear y quiere que sus subclases especifiquen dichos objetos.
+* Hay clases que delegan responsabilidades en una o varias subclases. Una aplicación es grande y compleja y posee muchos patrones creacionales. 
+
+ Diagrama  UML.
+
+![method](method.jpg)
+
+* **Creator:** declara el método de fabricación (creación), que devuelve un objeto de tipo Product. 
+* **ConcretCreator:** redefine el método de fabricación para devolver un producto.
+* **ProductoConcreto:** es el resultado final. El creador se apoya en sus subclases para definir el método de fabricación que devuelve el objeto apropiado.
+
 ## IV Patrones Estructurales
 
 Los patrones estructurales se enfocan en como las clases y objetos se componen para formar estructuras mayores, los patrones estructurales describen como las estructuras compuestas por clases crecen para crear nuevas funcionalidades de manera de agregar a la estructura flexibilidad y que la misma pueda cambiar en tiempo de ejecución lo cual es imposible con una composición de clases estáticas a pesar que se nombrarán todos para que haya claridad, en este documento solo nos centraremos en los dos anteriormente mencionados
